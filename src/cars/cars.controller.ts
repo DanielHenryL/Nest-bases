@@ -17,9 +17,7 @@ export class CarsController {
 
     @Get(':id')
     getCarById( @Param('id', ParseUUIDPipe ) id: string ){ 
-        return {
-            result:this.carsService.findOneById(id)
-        }
+        return this.carsService.findOneById(id)  
     }
 
     @Post()
@@ -28,10 +26,7 @@ export class CarsController {
     }
 
     @Patch(':id')
-    updateCar( 
-        @Param('id', ParseUUIDPipe ) id:string,
-        @Body() updateCarDto:UpdateCarDto)
-    {
+    updateCar( @Param('id', ParseUUIDPipe ) id:string, @Body() updateCarDto:UpdateCarDto){
         return this.carsService.update( id, updateCarDto )
     }
 
@@ -39,4 +34,5 @@ export class CarsController {
     deleteCar( @Param('id', ParseUUIDPipe ) id:string){
         return this.carsService.delete( id )
     }
+    
 }
